@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>油そば 遠藤</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="汁なし油そば一品だけの店。油そば 遠藤。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Noto+Serif+JP:wght@900&display=swap">
+<style>
+/* Layout: 4ページ（トップ／お品書き／親父の話／店舗案内）。写真は暗く、紙面は白。ページごとに組み方を変える */
+:root{
+  --paper:#FBFBFA;
+  --ink:#17181B;
+  --ai:#1C3256;
+  --ai-pale:#E8ECF2;
+  --mute:#6A6E75;
+  --line:#D6D9DE;
+  --sheet:#FFFFFF;
+  --on-photo:#F3F1EC;
+  --night:#120E0B;
+  --sans:"Noto Sans JP","Yu Gothic","Meiryo",system-ui,sans-serif;
+  --serif:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+  --gl:max(16px,env(safe-area-inset-left,0px));
+  --gr:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--paper:#111214;--ink:#E9EAEC;--ai:#7F9CCB;--ai-pale:#1A202B;--mute:#9A9EA6;--line:#2B2F36;--sheet:#1A1B1E;color-scheme:dark}
+}
+:root[data-theme="dark"]{--paper:#111214;--ink:#E9EAEC;--ai:#7F9CCB;--ai-pale:#1A202B;--mute:#9A9EA6;--line:#2B2F36;--sheet:#1A1B1E;color-scheme:dark}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:500;font-size:16px;line-height:1.95;font-feature-settings:"palt" 1;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:inherit;text-underline-offset:4px}
+a:focus-visible{outline:2px solid var(--ai);outline-offset:3px}
+h1,h2,h3,p{margin:0}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:1080px;margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
+.page{min-height:60vh}
+.serif{font-family:var(--serif);font-weight:900}
+
+/* ヘッダー */
+.hd{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:var(--paper);border-bottom:1px solid var(--line)}
+.hd .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;font-size:16px;letter-spacing:.06em}
+.logo i{font-style:normal;width:30px;height:30px;border:2px solid var(--ai);color:var(--ai);display:grid;place-items:center;font-family:var(--serif);font-size:17px;line-height:1}
+.nav{display:flex;gap:4px}
+.nav a{text-decoration:none;font-size:14px;font-weight:700;padding:6px 12px;border-bottom:2px solid transparent}
+.nav a[aria-current="page"]{border-bottom-color:var(--ai);color:var(--ai)}
+.nav a:hover{border-bottom-color:var(--line)}
+@media (max-width:640px){
+  .hd .wrap{flex-wrap:wrap;gap:4px;padding-block:10px 0}
+  .nav{width:100%;justify-content:space-between;margin-inline:-8px}
+  .nav a{font-size:13px;padding:8px}
+}
+
+/* ページ見出し（下層） */
+.ph{padding-block:56px 40px}
+.ph .crumb{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--mute)}
+.ph h1{font-family:var(--serif);font-weight:900;font-size:clamp(34px,5vw,52px);letter-spacing:.04em;line-height:1.3;margin-top:8px}
+
+/* ===== トップ ===== */
+.hero{position:relative;background:var(--night);color:var(--on-photo)}
+.hero img{width:100%;height:clamp(420px,62vw,720px);object-fit:cover;object-position:center 52%}
+.hero-copy{position:absolute;inset:0;max-width:1080px;margin:0 auto;padding-left:var(--gl);padding-right:var(--gr);display:flex;justify-content:space-between;align-items:stretch;pointer-events:none}
+.hero-l{align-self:flex-end;padding-bottom:40px;display:flex;flex-direction:column;gap:6px}
+.hero-l span{font-size:13px;font-weight:700;letter-spacing:.16em;opacity:.85}
+.hero-l b{font-size:15px;font-weight:700}
+.hero-tate{writing-mode:vertical-rl;font-family:var(--serif);font-weight:900;font-size:clamp(44px,7vw,92px);letter-spacing:.16em;line-height:1.2;padding-top:40px;white-space:nowrap}
+.hero-tate small{font-size:.34em;letter-spacing:.24em;margin-top:.6em;opacity:.85}
+@media (max-width:640px){.hero img{height:520px;object-position:58% 50%}.hero-tate{font-size:48px;padding-top:24px}.hero-l{padding-bottom:24px}}
+
+.intro .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;padding-block:80px}
+.intro h2{font-family:var(--serif);font-weight:900;font-size:clamp(26px,3.4vw,38px);line-height:1.55;letter-spacing:.02em}
+.intro .txt{display:flex;flex-direction:column;gap:16px;font-size:16px;padding-top:6px}
+@media (max-width:760px){.intro .wrap{grid-template-columns:1fr;gap:24px;padding-block:56px}}
+
+.go{border-top:1px solid var(--ink)}
+.go a{display:grid;grid-template-columns:200px minmax(0,1fr) auto;gap:32px;align-items:center;padding-block:28px;border-bottom:1px solid var(--line);text-decoration:none}
+.go a:hover .go-t{color:var(--ai)}
+.go .thumb{aspect-ratio:3/2;background:var(--night);overflow:hidden;max-width:100%}
+.go .thumb img{width:100%;height:100%;object-fit:cover}
+.go .thumb.text{display:grid;place-items:center;color:var(--on-photo);font-family:var(--serif);font-weight:900;font-size:40px;letter-spacing:.2em}
+.go-t{font-size:24px;font-weight:900;letter-spacing:-0.01em;transition:color .15s}
+.go-d{font-size:14px;color:var(--mute);margin-top:4px}
+.go .arr{font-size:14px;font-weight:700;white-space:nowrap}
+@media (max-width:640px){.go a{grid-template-columns:120px minmax(0,1fr);gap:16px}.go .arr{display:none}.go-t{font-size:19px}.go .thumb.text{font-size:24px}}
+.go-wrap{padding-bottom:96px}
+
+.noren{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;height:clamp(130px,18vw,190px);max-width:1080px;margin:0 auto 0;padding-left:var(--gl);padding-right:var(--gr)}
+.noren div{background:var(--ai);color:#FFFFFF;display:flex;justify-content:center;padding-top:clamp(24px,3.6vw,40px);font-family:var(--serif);font-weight:900;font-size:clamp(44px,7vw,80px);line-height:1}
+:root[data-theme="dark"] .noren div{background:#22406D}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .noren div{background:#22406D}}
+.noren-cap{max-width:1080px;margin:0 auto;padding:12px var(--gr) 96px var(--gl);font-size:13px;color:var(--mute);text-align:right}
+
+/* ===== お品書き ===== */
+.menu-top{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:48px;align-items:start;padding-bottom:80px}
+.menu-photo{background:var(--night)}
+.menu-photo img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.menu-photo figcaption{font-size:12px;color:var(--mute);padding-top:8px;background:var(--paper)}
+.main-item{border-top:2px solid var(--ai);padding-top:20px;display:flex;flex-direction:column;gap:20px}
+.main-item h2{font-family:var(--serif);font-weight:900;font-size:40px;letter-spacing:.06em;line-height:1.2}
+.main-item .price{font-size:44px;font-weight:900;color:var(--ai);line-height:1}
+.main-item .price small{font-size:14px;color:var(--mute);font-weight:700;margin-left:8px}
+.main-item p{font-size:15px}
+.sizes{width:100%;border-collapse:collapse;font-size:15px}
+.sizes th{background:var(--ai-pale);color:var(--ai);font-weight:700;font-size:13px;letter-spacing:.08em;text-align:left;padding:10px 12px;border-bottom:2px solid var(--ai)}
+.sizes td{padding:12px;border-bottom:1px solid var(--line)}
+.sizes .r{text-align:right}
+@media (max-width:820px){.menu-top{grid-template-columns:1fr;gap:32px;padding-bottom:56px}}
+
+.sub-h{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--ink);padding-bottom:12px;margin-bottom:24px}
+.sub-h h2{font-size:24px;font-weight:900;letter-spacing:-0.02em}
+.sub-h span{font-size:13px;color:var(--mute)}
+.machine{border:2px solid var(--ink)}
+.machine-top{display:flex;justify-content:space-between;gap:12px;padding:10px 16px;border-bottom:2px solid var(--ink);font-size:12px;font-weight:700;letter-spacing:.1em}
+.machine-top span:last-child{color:var(--mute)}
+.keys{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line)}
+.key{background:var(--paper);padding:14px 12px 12px;display:flex;flex-direction:column;gap:2px;min-height:100px;min-width:0}
+.key .nm{font-weight:900;font-size:16px;line-height:1.35}
+.key .sb{font-size:12px;color:var(--mute);line-height:1.5}
+.key .pr{margin-top:auto;font-weight:900;font-size:17px}
+.machine-bot{padding:10px 16px;border-top:2px solid var(--ink);font-size:12px;color:var(--mute)}
+@media (max-width:760px){.keys{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:440px){.keys{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.eat{padding-block:80px 96px}
+.eat ol{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.eat li{display:grid;grid-template-columns:120px 220px minmax(0,1fr);gap:24px;padding-block:24px;border-bottom:1px solid var(--line);align-items:baseline}
+.eat .when{font-size:13px;font-weight:700;color:var(--mute);letter-spacing:.06em}
+.eat h3{font-size:20px;font-weight:900}
+.eat p{font-size:15px}
+@media (max-width:760px){.eat li{grid-template-columns:1fr;gap:4px}}
+
+/* ===== 親父の話 ===== */
+.story-grid{display:grid;grid-template-columns:auto minmax(0,1fr);gap:64px;padding-bottom:80px;align-items:start}
+.tategaki{writing-mode:vertical-rl;height:480px;font-size:17px;line-height:2.15;letter-spacing:.06em;max-width:100%}
+.tategaki p + p{margin-right:1em}
+.tategaki .sig{margin-right:2.4em;color:var(--mute);font-size:14px;text-align:end}
+.story-side{display:flex;flex-direction:column;gap:32px}
+.story-side figure{margin:0;background:var(--night)}
+.story-side figure img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:40% 45%}
+.story-side figcaption{background:var(--paper);font-size:12px;color:var(--mute);padding-top:8px}
+.kept{border-top:2px solid var(--ai)}
+.kept div{display:grid;grid-template-columns:7.5em 1fr;gap:16px;padding-block:14px;border-bottom:1px solid var(--line);font-size:15px}
+.kept dt{font-weight:900}
+.kept dd{margin:0}
+@media (max-width:900px){
+  .story-grid{grid-template-columns:1fr;gap:40px}
+  .tategaki{writing-mode:horizontal-tb;height:auto;max-width:34em;line-height:2}
+  .tategaki p + p{margin:1em 0 0}
+  .tategaki .sig{margin-top:1.6em}
+}
+.quote-band{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.quote-band .wrap{padding-block:72px;display:flex;justify-content:center}
+.quote-band p{font-family:var(--serif);font-weight:900;font-size:clamp(24px,3.4vw,36px);letter-spacing:.06em;line-height:1.6}
+.quote-band cite{display:block;font-family:var(--sans);font-style:normal;font-size:13px;font-weight:700;color:var(--mute);letter-spacing:.12em;margin-top:12px}
+
+/* ===== 店舗案内 ===== */
+.front{background:var(--night)}
+.front img{width:100%;height:clamp(320px,46vw,560px);object-fit:cover;object-position:center 40%}
+.access{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:56px;padding-block:64px 96px}
+.info{border-top:2px solid var(--ai)}
+.info div{display:grid;grid-template-columns:7em 1fr;gap:16px;padding-block:14px;border-bottom:1px solid var(--line);font-size:15px}
+.info dt{font-weight:900}
+.info dd{margin:0}
+.info .tbd{color:var(--mute)}
+.harigami{background:var(--sheet);border:1px solid var(--ink);padding:32px 28px;transform:rotate(-0.8deg);writing-mode:vertical-rl;font-family:var(--serif);font-weight:900;font-size:19px;line-height:2;letter-spacing:.08em;height:400px;max-width:100%;justify-self:start}
+.harigami h3{font-size:26px;letter-spacing:.3em;margin-left:16px}
+.harigami ol{margin:0;padding:0;list-style:none}
+.harigami .sign{margin-right:20px;color:var(--ai);align-self:flex-end}
+.harigami{display:flex;flex-direction:column}
+.side{display:flex;flex-direction:column;gap:40px}
+.ig{display:flex;flex-direction:column;gap:8px;font-size:15px;border-top:1px solid var(--ink);padding-top:16px}
+.ig b{font-size:18px;font-weight:900}
+@media (max-width:820px){
+  .access{grid-template-columns:1fr;gap:48px;padding-block:48px 72px}
+  .harigami{writing-mode:horizontal-tb;height:auto;font-size:17px;padding:24px}
+  .harigami h3{margin:0 0 10px;font-size:22px}
+  .harigami .sign{margin:12px 0 0}
+}
+
+/* 次のページへ */
+.next{border-top:2px solid var(--ai)}
+.next a{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-block:32px;text-decoration:none}
+.next span{font-size:13px;font-weight:700;color:var(--mute);letter-spacing:.12em}
+.next b{font-size:clamp(22px,3vw,30px);font-weight:900}
+.next a:hover b{color:var(--ai)}
+
+.ft{border-top:1px solid var(--line)}
+.ft .wrap{padding-block:28px 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--mute)}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="wrap">
+    <a class="logo" href="#"><i aria-hidden="true">遠</i>油そば 遠藤</a>
+    <nav class="nav" aria-label="ページ">
+      <a href="#" data-p="home">トップ</a>
+      <a href="#menu" data-p="menu">お品書き</a>
+      <a href="#story" data-p="story">親父の話</a>
+      <a href="#access" data-p="access">店舗案内</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ======== トップ ======== -->
+<div class="page" data-page="home">
+  <section class="hero">
+    <img src="img/bowl.jpg" alt="黒い丼に盛った油そばを真上から。極太麺の上にチャーシュー2枚、海苔、青ネギ、卵黄" width="1800" height="1200">
+    <div class="hero-copy">
+      <div class="hero-l"><span>汁なし油そば</span><b>11:00〜売り切れまで　水曜休み</b></div>
+      <h1 class="hero-tate">遠藤<small>油そば</small></h1>
+    </div>
+  </section>
+
+  <section class="intro">
+    <div class="wrap">
+      <h2>親父の油そばを、<br>そのまま継ぎました。</h2>
+      <div class="txt">
+        <p>タレの作り方、麺の茹で時間、丼に入れる順番。どれも親父に教わったとおりです。</p>
+        <p>メニューは油そばだけ。量は選べますが、味は選べません。そういう店です。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap go-wrap" aria-label="各ページ">
+    <div class="go">
+      <a href="#menu"><span class="thumb"><img src="img/bowlsq.jpg" alt="" loading="lazy"></span><span><span class="go-t">お品書き</span><span class="go-d" style="display:block">油そば950円（税込）。食券機の並びと、食べ方</span></span><span class="arr">見る</span></a>
+      <a href="#story"><span class="thumb text">親父</span><span><span class="go-t">親父の話</span><span class="go-d" style="display:block">口数の少ない人が、四十年かけて決めた味</span></span><span class="arr">読む</span></a>
+      <a href="#access"><span class="thumb"><img src="img/front.jpg" alt="" loading="lazy"></span><span><span class="go-t">店舗案内</span><span class="go-d" style="display:block">営業時間、定休日、売り切れの確認方法</span></span><span class="arr">見る</span></a>
+    </div>
+  </section>
+
+  <div class="noren" aria-hidden="true"><div>油</div><div>そ</div><div>ば</div></div>
+  <p class="noren-cap">藍の暖簾が出ていれば、営業中です。</p>
+</div>
+
+<!-- ======== お品書き ======== -->
+<div class="page" data-page="menu" hidden>
+  <div class="wrap">
+    <header class="ph"><span class="crumb">お品書き</span><h1>油そば、一品だけ</h1></header>
+    <section class="menu-top">
+      <figure class="menu-photo" style="margin:0">
+        <img src="img/bowlsq.jpg" alt="油そばを真上から" loading="lazy" width="1200" height="1200">
+        <figcaption>写真は並盛。卵黄はつきません（生玉子80円）。</figcaption>
+      </figure>
+      <div class="main-item">
+        <h2>油そば</h2>
+        <p class="price">950円<small>税込</small></p>
+        <p>極太の平打ち麺に、親父の代から継ぎ足している醤油ダレと、ネギで香りを移した豚の脂。具はチャーシュー、メンマ、青ネギ、海苔です。</p>
+        <table class="sizes">
+          <thead><tr><th>量</th><th class="r">麺</th><th class="r">価格（税込）</th></tr></thead>
+          <tbody>
+            <tr><td>並</td><td class="r">200g</td><td class="r">950円</td></tr>
+            <tr><td>大</td><td class="r">300g</td><td class="r">950円</td></tr>
+            <tr><td>特</td><td class="r">400g</td><td class="r">1,100円</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:13px;color:var(--mute)">麺の固さ、タレの濃さ、油の量の調整はしていません。</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="sub-h"><h2>食券機</h2><span>入口の左。価格はすべて税込です。</span></div>
+      <div class="machine">
+        <div class="machine-top"><span>食券</span><span>現金・交通系IC</span></div>
+        <div class="keys">
+          <div class="key"><span class="nm">油そば 並</span><span class="sb">200g</span><span class="pr">950円</span></div>
+          <div class="key"><span class="nm">油そば 大</span><span class="sb">300g</span><span class="pr">950円</span></div>
+          <div class="key"><span class="nm">油そば 特</span><span class="sb">400g</span><span class="pr">1,100円</span></div>
+          <div class="key"><span class="nm">味玉</span><span class="sb">タレ漬け</span><span class="pr">150円</span></div>
+          <div class="key"><span class="nm">肉増し</span><span class="sb">チャーシュー2枚</span><span class="pr">300円</span></div>
+          <div class="key"><span class="nm">ネギ増し</span><span class="sb">&nbsp;</span><span class="pr">100円</span></div>
+          <div class="key"><span class="nm">生玉子</span><span class="sb">&nbsp;</span><span class="pr">80円</span></div>
+          <div class="key"><span class="nm">追い飯</span><span class="sb">締めの小ライス</span><span class="pr">100円</span></div>
+          <div class="key"><span class="nm">瓶ビール</span><span class="sb">中瓶</span><span class="pr">600円</span></div>
+          <div class="key"><span class="nm">烏龍茶</span><span class="sb">&nbsp;</span><span class="pr">200円</span></div>
+        </div>
+        <div class="machine-bot">千円札・五千円札・一万円札が使えます。</div>
+      </div>
+    </section>
+
+    <section class="eat">
+      <div class="sub-h"><h2>食べ方</h2><span>親父がいつも客に言っていた順番です</span></div>
+      <ol>
+        <li><span class="when">着丼したら</span><h3>底から混ぜる</h3><p>タレと脂は丼の底にあります。箸を底まで入れて、麺に色がつくまで十回以上返してください。</p></li>
+        <li><span class="when">半分まで</span><h3>何も足さない</h3><p>まずはそのままで。親父の味はここで決まります。</p></li>
+        <li><span class="when">半分から</span><h3>酢とラー油</h3><p>酢をひと回し、ラー油を三滴。入れすぎるとタレが負けます。</p></li>
+        <li><span class="when">麺がなくなったら</span><h3>追い飯</h3><p>残ったタレに小ライスを入れて混ぜます。これで一杯が終わります。</p></li>
+      </ol>
+    </section>
+  </div>
+  <div class="next"><div class="wrap"><a href="#story"><span>次のページ</span><b>親父の話</b></a></div></div>
+</div>
+
+<!-- ======== 親父の話 ======== -->
+<div class="page" data-page="story" hidden>
+  <div class="wrap">
+    <header class="ph"><span class="crumb">親父の話</span><h1>同じものを、毎日出す</h1></header>
+    <section class="story-grid">
+      <div class="tategaki">
+        <p>親父は口数の少ない人で、店でもほとんど喋りませんでした。麺を上げて、丼に盛って、置く。昼から夜まで、ずっとそれです。</p>
+        <p>一度だけ、今の流行りに合わせて味を変えたらどうかと言ったことがあります。親父は「客はこれを食いに来てる」とだけ言って、その日もいつもと同じタレを炊いていました。</p>
+        <p>店を継ぐときに教わったのは、配合よりも、毎朝タレを舐めて昨日と同じか確かめることでした。紙には何も書いてありません。舌で覚えるしかなかった。</p>
+        <p>なので、うちは新しいことはしません。限定もやりません。親父の油そばを、今日も同じように出します。</p>
+        <p class="sig">二代目 店主</p>
+      </div>
+      <div class="story-side">
+        <figure>
+          <img src="img/bowl.jpg" alt="油そばを真上から" loading="lazy" width="1800" height="1200">
+          <figcaption>盛り付けの位置も親父のときのまま。肉は左上、海苔は右。</figcaption>
+        </figure>
+        <dl class="kept">
+          <div><dt>継いだもの</dt><dd>元ダレ、寸胴一本、茹で時間 7分30秒</dd></div>
+          <div><dt>変えたもの</dt><dd>張り紙の字だけ</dd></div>
+          <div><dt>やらないこと</dt><dd>限定麺、味の調整、二号店</dd></div>
+        </dl>
+      </div>
+    </section>
+  </div>
+  <section class="quote-band">
+    <div class="wrap"><p>「客はこれを食いに来てる」<cite>親父</cite></p></div>
+  </section>
+  <div class="next"><div class="wrap"><a href="#access"><span>次のページ</span><b>店舗案内</b></a></div></div>
+</div>
+
+<!-- ======== 店舗案内 ======== -->
+<div class="page" data-page="access" hidden>
+  <div class="wrap"><header class="ph"><span class="crumb">店舗案内</span><h1>昼から、売り切れまで</h1></header></div>
+  <div class="front"><img src="img/front.jpg" alt="夜の店構え。藍の暖簾に白で油そば、左の壁に張り紙" loading="lazy" width="1600" height="1100"></div>
+  <div class="wrap">
+    <section class="access">
+      <dl class="info">
+        <div><dt>店名</dt><dd>油そば 遠藤</dd></div>
+        <div><dt>営業時間</dt><dd>11:00〜売り切れまで<br>金・土は夜 17:30〜20:30 も営業</dd></div>
+        <div><dt>定休日</dt><dd>水曜日</dd></div>
+        <div><dt>席</dt><dd>カウンター 9席</dd></div>
+        <div><dt>支払い</dt><dd>食券機（現金・交通系IC）</dd></div>
+        <div><dt>所在地</dt><dd class="tbd">住所を掲載予定</dd></div>
+        <div><dt>運営</dt><dd>株式会社もものまき</dd></div>
+      </dl>
+      <div class="side">
+        <div class="harigami">
+          <h3>お客様へ</h3>
+          <ol>
+            <li>一、味のご注文は受けません</li>
+            <li>一、来たらすぐ底から混ぜる</li>
+            <li>一、半分過ぎたら酢とラー油</li>
+            <li>一、タレが無くなれば閉店</li>
+          </ol>
+          <p class="sign">店主</p>
+        </div>
+        <div class="ig">
+          <b>売り切れはInstagramで</b>
+          <p>その日の売り切れや臨時休みは、Instagramに出します。遠くから来る方は、家を出る前に見てください。</p>
+          <a href="https://www.instagram.com/p/DfB5dSpnXRl/" target="_blank" rel="noopener">Instagramを見る</a>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="next"><div class="wrap"><a href="#"><span>最初に戻る</span><b>トップ</b></a></div></div>
+</div>
+</main>
+
+<footer class="ft">
+  <div class="wrap"><span>油そば 遠藤</span><span>© 2026 株式会社もものまき</span></div>
+</footer>
+
+<script>
+(function(){
+  var pages=['menu','story','access'];
+  function show(){
+    var h=(location.hash||'').replace('#','');
+    var id=pages.indexOf(h)>=0?h:'home';
+    document.querySelectorAll('.page').forEach(function(p){p.hidden=p.getAttribute('data-page')!==id});
+    document.querySelectorAll('.nav a').forEach(function(a){
+      if(a.getAttribute('data-p')===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
+    });
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',show);
+  document.querySelectorAll('a[href="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();if(location.hash){location.hash='';}else{show();}})});
+  show();
+})();
+</script>
+</body>
+</html>
